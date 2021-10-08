@@ -23,3 +23,13 @@ lowest=$(head -n 1 task2_wages_sorted.txt)
 echo "Lowest earner (gender, yearsExperience, wage): $lowest"
 no_females=$(cat task2_wages_sorted.txt | tail -n 10 | grep -o "female" | wc -l)
 echo "Number of females in top 10 earners:$no_females"
+
+
+# third task
+
+# the effect on graduating is returned
+
+val1=$(cat wages.csv | cut -d , -f 3,4 | grep -E "^12" | sort -t , -k 2 -h | head -n 1 | cut -d , -f 2)
+val2=$(cat wages.csv | cut -d , -f 3,4 | grep -E "^16" | sort -t , -k 2 -h | head -n 1 | cut -d , -f 2)
+echo "Effect of graduating college (12 vs. 16 yrs) on minimum wage:"
+echo "$val1 - $val2" | bc
